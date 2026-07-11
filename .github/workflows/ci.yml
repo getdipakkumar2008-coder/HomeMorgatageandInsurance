@@ -31,7 +31,7 @@ jobs:
 
       - name: Smoke test — health endpoint
         run: |
-          uvicorn app.api.routes:router --port 8000 &
+          uvicorn app.server:app --port 8000 &
           SERVER_PID=$!
           # Wait until the server is accepting connections (up to 15 s)
           for i in $(seq 1 15); do
