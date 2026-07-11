@@ -1,0 +1,132 @@
+version: "v1.0.0"
+description: "Mock location-based risk factor data by ZIP prefix and state"
+
+# ZIP prefix risk factors (first 3 digits)
+zip_risk_factors:
+  "787":  # Austin, TX area
+    region: "Austin TX"
+    flood_zone: false
+    wildfire_zone: true
+    tornado_alley: false
+    hurricane_zone: false
+    earthquake_zone: false
+    base_hazard_modifier: 1.1
+
+  "900":  # Los Angeles, CA area
+    region: "Los Angeles CA"
+    flood_zone: false
+    wildfire_zone: true
+    tornado_alley: false
+    hurricane_zone: false
+    earthquake_zone: true
+    base_hazard_modifier: 1.4
+
+  "331":  # Miami, FL area
+    region: "Miami FL"
+    flood_zone: true
+    wildfire_zone: false
+    tornado_alley: false
+    hurricane_zone: true
+    earthquake_zone: false
+    base_hazard_modifier: 1.5
+
+  "600":  # Chicago, IL area
+    region: "Chicago IL"
+    flood_zone: false
+    wildfire_zone: false
+    tornado_alley: true
+    hurricane_zone: false
+    earthquake_zone: false
+    base_hazard_modifier: 1.2
+
+  "100":  # New York, NY area
+    region: "New York NY"
+    flood_zone: true
+    wildfire_zone: false
+    tornado_alley: false
+    hurricane_zone: false
+    earthquake_zone: false
+    base_hazard_modifier: 1.2
+
+  "770":  # Houston, TX area
+    region: "Houston TX"
+    flood_zone: true
+    wildfire_zone: false
+    tornado_alley: false
+    hurricane_zone: true
+    earthquake_zone: false
+    base_hazard_modifier: 1.4
+
+  "302":  # Atlanta, GA area
+    region: "Atlanta GA"
+    flood_zone: false
+    wildfire_zone: false
+    tornado_alley: false
+    hurricane_zone: false
+    earthquake_zone: false
+    base_hazard_modifier: 0.9
+
+  "850":  # Phoenix, AZ area
+    region: "Phoenix AZ"
+    flood_zone: false
+    wildfire_zone: true
+    tornado_alley: false
+    hurricane_zone: false
+    earthquake_zone: false
+    base_hazard_modifier: 1.0
+
+  "980":  # Seattle, WA area
+    region: "Seattle WA"
+    flood_zone: false
+    wildfire_zone: true
+    tornado_alley: false
+    hurricane_zone: false
+    earthquake_zone: true
+    base_hazard_modifier: 1.2
+
+# State-level defaults (fallback if ZIP prefix not found)
+state_defaults:
+  TX:
+    flood_zone: false
+    wildfire_zone: false
+    tornado_alley: true
+    hurricane_zone: false
+    earthquake_zone: false
+    base_hazard_modifier: 1.1
+  CA:
+    flood_zone: false
+    wildfire_zone: true
+    tornado_alley: false
+    hurricane_zone: false
+    earthquake_zone: true
+    base_hazard_modifier: 1.3
+  FL:
+    flood_zone: true
+    wildfire_zone: false
+    tornado_alley: false
+    hurricane_zone: true
+    earthquake_zone: false
+    base_hazard_modifier: 1.4
+  NY:
+    flood_zone: false
+    wildfire_zone: false
+    tornado_alley: false
+    hurricane_zone: false
+    earthquake_zone: false
+    base_hazard_modifier: 1.0
+  IL:
+    flood_zone: false
+    wildfire_zone: false
+    tornado_alley: true
+    hurricane_zone: false
+    earthquake_zone: false
+    base_hazard_modifier: 1.1
+
+# Global default (last resort)
+global_default:
+  flood_zone: false
+  wildfire_zone: false
+  tornado_alley: false
+  hurricane_zone: false
+  earthquake_zone: false
+  base_hazard_modifier: 1.0

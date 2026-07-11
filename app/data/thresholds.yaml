@@ -1,0 +1,78 @@
+version: "v1.0.0"
+
+scoring:
+  geo_hazard:
+    weight: 30
+    max: 30
+  value_exposure:
+    weight: 30
+    max: 30
+  property_condition:
+    weight: 20
+    max: 20
+  affordability_alignment:
+    weight: 20
+    max: 20
+  total_max: 100
+
+tiers:
+  - name: Basic
+    min_score: 0
+    max_score: 35
+  - name: Standard
+    min_score: 36
+    max_score: 60
+  - name: Premium
+    min_score: 61
+    max_score: 80
+  - name: Custom
+    min_score: 81
+    max_score: 100
+
+confidence:
+  low_threshold: 0.60
+  high_threshold: 0.85
+  human_review_below: 0.60
+
+geo_hazard:
+  base_score: 10
+  flood_zone_add: 8
+  wildfire_zone_add: 7
+  tornado_alley_add: 6
+  hurricane_zone_add: 9
+  earthquake_zone_add: 5
+
+value_exposure:
+  thresholds:
+    - max_price: 300000
+      score: 10
+    - max_price: 500000
+      score: 16
+    - max_price: 750000
+      score: 21
+    - max_price: 1000000
+      score: 25
+    - max_price: 99999999
+      score: 30
+
+property_condition:
+  age_thresholds:
+    - max_age: 10
+      score: 4
+    - max_age: 20
+      score: 7
+    - max_age: 40
+      score: 12
+    - max_age: 60
+      score: 16
+    - max_age: 9999
+      score: 20
+
+affordability_alignment:
+  preference_scores:
+    low_premium: 8
+    balanced: 12
+    high_protection: 18
+  ltv_add:
+    high_ltv_threshold: 0.80
+    score_add: 4
