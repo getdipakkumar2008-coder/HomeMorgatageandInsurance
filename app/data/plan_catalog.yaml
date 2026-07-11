@@ -1,0 +1,74 @@
+catalog_version: "v1.0.0"
+
+plans:
+  - plan_id: "basic-v1"
+    plan_tier: "Basic"
+    min_score: 0
+    max_score: 35
+    description: "Essential coverage for low-risk properties"
+    coverage_defaults:
+      dwelling_band: "60%-80% of home value"
+      personal_property_band: "20%-30% of dwelling"
+      liability_band: "$100k-$200k"
+      premium_monthly_band_pct: "0.05%-0.07%"
+    features:
+      - "Dwelling coverage"
+      - "Personal property (basic)"
+      - "Liability protection"
+      - "Additional living expenses (limited)"
+
+  - plan_id: "standard-v1"
+    plan_tier: "Standard"
+    min_score: 36
+    max_score: 60
+    description: "Balanced coverage for moderate-risk properties"
+    coverage_defaults:
+      dwelling_band: "80%-100% of home value"
+      personal_property_band: "30%-40% of dwelling"
+      liability_band: "$300k-$500k"
+      premium_monthly_band_pct: "0.07%-0.10%"
+    features:
+      - "Full dwelling replacement coverage"
+      - "Personal property (enhanced)"
+      - "Liability protection"
+      - "Additional living expenses"
+      - "Water backup coverage"
+
+  - plan_id: "premium-v1"
+    plan_tier: "Premium"
+    min_score: 61
+    max_score: 80
+    description: "Comprehensive coverage for higher-risk properties"
+    coverage_defaults:
+      dwelling_band: "100%-120% of home value"
+      personal_property_band: "40%-50% of dwelling"
+      liability_band: "$500k-$1M"
+      premium_monthly_band_pct: "0.10%-0.15%"
+    features:
+      - "Extended replacement cost"
+      - "Personal property (full replacement)"
+      - "High liability protection"
+      - "Additional living expenses (extended)"
+      - "Water backup coverage"
+      - "Scheduled personal property"
+      - "Equipment breakdown"
+
+  - plan_id: "custom-v1"
+    plan_tier: "Custom"
+    min_score: 81
+    max_score: 100
+    description: "Tailored coverage for high-risk or high-value properties"
+    coverage_defaults:
+      dwelling_band: "Custom appraisal-based"
+      personal_property_band: "Custom appraisal-based"
+      liability_band: "$1M+"
+      premium_monthly_band_pct: "0.15%+"
+    features:
+      - "Guaranteed replacement cost"
+      - "Blanket personal property"
+      - "Umbrella liability"
+      - "Comprehensive additional living expenses"
+      - "Flood coverage"
+      - "Earthquake coverage"
+      - "High-value items scheduled"
+      - "Identity theft protection"
