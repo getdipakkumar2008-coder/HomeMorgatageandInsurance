@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    env:
+      LANGCHAIN_TRACING_V2: "false"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run test suite
+        run: pytest tests/ -v
+
+      - name: Smoke test — health endpoint
+        run: |
+          uvicorn app.api.routes:router --port 8000 &
+          SERVER_PID=$!
+          # Wait until the server is accepting connections (up to 15 s)
+          for i in $(seq 1 15); do
+            curl -sf http://localhost:8000/v1/health && break
+            sleep 1
+          done
+          curl -sf http://localhost:8000/v1/health | python3 -c "
+          import sys, json
+          data = json.load(sys.stdin)
+          assert data['status'] == 'healthy', f'Unexpected status: {data}'
+          print('Health check passed:', data)
+          "
+          kill $SERVER_PID
